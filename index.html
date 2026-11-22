@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="ko"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>YEOWOO · 커미션 마켓</title>
+<title>YEOWOO · FOR SAVE YOUR WALLET</title>
 <style>
 :root{--bg:#F4F7FB;--cd:#fff;--tx:#14202e;--mu:#667689;--ac:#7CC0F2;--ax:#0b2a44;--at:#1f74bd;--bd:#dde5ee;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 :root[data-theme=dark]{--bg:#121212;--cd:#1e1e1e;--tx:#f2f2f2;--mu:#9a9a9a;--ac:#FFD43B;--ax:#161616;--at:#FFD43B;--bd:#2f2f2f;color-scheme:dark}
@@ -167,7 +167,7 @@ const card=x=>`<article class="card" data-a="open" data-v="${x.id}"><div class="
 const grid=(l=list())=>l.length?l.map(card).join(''):'<p class="empty">조건에 맞는 커미션이 없어요. 검색어나 카테고리를 바꿔 보세요.</p>';
 const dots=a=>`<span class="dots">${'<i class="o"></i>'.repeat(AR[a][2])}${'<i></i>'.repeat(AR[a][3]-AR[a][2])}</span> 빈 슬롯 ${AR[a][2]}/${AR[a][3]}`;
 const gal=a=>`<div class="gal">${['두상','흉상','반신','전신','SD','배경'].map((n,i)=>`<div style="${th((AR[a][4]+i*38)%360)}">${n}</div>`).join('')}</div>`;
-function home(){return`<h1>사지는 않고, 누르기만 하는 커미션 마켓</h1><p class="mu">신청서도 쓰고 결제 버튼도 누르지만 실제 돈은 나가지 않아요.</p>
+function home(){return`<h1>당신을 위한 커미션 플랫폼</h1><p class="mu">WE ARE HERE TO PROTECT YOUR WALLET.</p>
 <div class="bar"><input id="q" data-in="q" type="search" placeholder="커미션, 작가, 카테고리 검색" value="${e(S.q)}"><select data-in="sort" aria-label="정렬"><option value="rec"${S.sort==='rec'?' selected':''}>기본 순</option><option value="lo"${S.sort==='lo'?' selected':''}>시작가 낮은 순</option><option value="hi"${S.sort==='hi'?' selected':''}>시작가 높은 순</option></select><button class="btn" data-a="add">+ 타입 추가</button></div>
 <div class="chips">${['전체',...cats()].map(c=>`<button class="chip${S.cat===c?' on':''}" data-a="cat" data-v="${e(c)}">${e(c)}</button>`).join('')}</div>
 <div class="grid" id="grid">${grid()}</div>`}
