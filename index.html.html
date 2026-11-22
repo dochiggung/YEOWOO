@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>YEOWOO · 커미션 마켓</title>
+<style>
+:root{--bg:#F4F7FB;--cd:#fff;--tx:#14202e;--mu:#667689;--ac:#7CC0F2;--ax:#0b2a44;--at:#1f74bd;--bd:#dde5ee;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root[data-theme=dark]{--bg:#121212;--cd:#1e1e1e;--tx:#f2f2f2;--mu:#9a9a9a;--ac:#FFD43B;--ax:#161616;--at:#FFD43B;--bd:#2f2f2f;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.55 "Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--at);outline-offset:2px}
+.w{max-width:1040px;margin:0 auto;padding:0 16px 48px}
+header{padding:12px 16px 4px;max-width:1040px;margin:0 auto}
+.top{display:flex;align-items:center;gap:8px}
+.logo{font-weight:900;font-size:19px;letter-spacing:.04em;margin-right:4px;background:none;border:0;padding:0;color:var(--at)}
+nav{display:flex;gap:4px;overflow-x:auto;margin-top:8px}
+nav button{background:none;border:0;padding:8px 12px;border-radius:99px;color:var(--mu);white-space:nowrap}
+nav button.on{background:var(--ac);color:var(--ax);font-weight:700}
+.ic{border:1px solid var(--bd);background:var(--cd);border-radius:99px;padding:7px 14px}
+h1{font-size:28px;line-height:1.25;margin:12px 0 6px}
+h2{font-size:20px;margin:24px 0 10px}
+h3{margin:4px 0;font-size:16px}
+.mu{color:var(--mu);font-size:13px;margin:0}
+.bar{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
+.bar input,.bar select,.f input,.f select,.f textarea{background:var(--cd);border:1px solid var(--bd);border-radius:12px;padding:10px 12px;width:100%}
+.bar input{flex:1 1 220px;width:auto}
+.bar select{width:auto}
+.chips{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px}
+.chip{border:1px solid var(--bd);background:var(--cd);border-radius:99px;padding:6px 14px;white-space:nowrap}
+.chip.on{background:var(--ac);color:var(--ax);border-color:var(--ac);font-weight:700}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-top:14px}
+.card{background:var(--cd);border:1px solid var(--bd);border-radius:16px;overflow:hidden;cursor:pointer}
+.card:hover{border-color:var(--at)}
+.th{height:110px;display:grid;place-items:center;font-size:30px;font-weight:900;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.3)}
+.cb{padding:12px}
+.tag{font-size:12px;color:var(--at);font-weight:700}
+.row{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
+.heart{background:none;border:0;font-size:22px;color:var(--at);padding:0 4px}
+.btn{background:var(--ac);color:var(--ax);border:0;border-radius:12px;padding:12px 18px;font-weight:700}
+.btn.g{background:var(--cd);color:var(--tx);border:1px solid var(--bd)}
+.box{background:var(--cd);border:1px solid var(--bd);border-radius:16px;padding:16px;margin:12px 0}
+.det{display:grid;grid-template-columns:minmax(0,1fr);gap:16px}
+@media(min-width:720px){.det{grid-template-columns:1fr 1fr}}
+.big{height:260px;border-radius:16px;display:grid;place-items:center;font-size:56px;font-weight:900;color:#fff}
+.dots i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:5px;background:var(--bd)}
+.dots i.o{background:var(--ac)}
+.gal{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.gal div{aspect-ratio:1;border-radius:12px;display:grid;place-items:center;color:#fff;font-size:13px;font-weight:700;text-align:center;padding:4px}
+.f label{display:block;margin:10px 0 4px;font-size:13px;color:var(--mu)}
+.f .ck{display:flex;gap:8px;align-items:center;color:var(--tx);font-size:15px}
+.f .ck input{width:auto}
+.ov{position:fixed;inset:0;background:rgba(0,0,0,.55);display:grid;place-items:center;padding:16px;z-index:9;overflow:auto}
+.md{background:var(--cd);border-radius:20px;padding:22px;width:100%;max-width:420px;max-height:92vh;overflow:auto}
+.pt{font-size:26px;font-weight:900;color:var(--at)}
+.sp{width:48px;height:48px;border:5px solid var(--bd);border-top-color:var(--ac);border-radius:50%;margin:10px auto;animation:r 1s linear infinite}
+@keyframes r{to{transform:rotate(360deg)}}
+.ok{width:64px;height:64px;border-radius:50%;background:var(--ac);color:var(--ax);font-size:34px;display:grid;place-items:center;margin:8px auto;animation:pop .4s}
+@keyframes pop{from{transform:scale(.3)}}
+.c{text-align:center}
+.pay{display:flex;justify-content:space-between;border:1px dashed var(--at);border-radius:12px;padding:10px 12px;margin:10px 0;font-size:14px}
+#toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ac);color:var(--ax);padding:10px 18px;border-radius:99px;font-weight:700;z-index:20}
+.empty{text-align:center;color:var(--mu);padding:40px 0}
+@media(prefers-reduced-motion:reduce){.sp,.ok{animation:none}}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.cl{display:flex;flex-direction:column;gap:8px;margin:12px 0}
+.bu{max-width:84%;padding:10px 14px;border-radius:16px;background:var(--cd);border:1px solid var(--bd);white-space:pre-wrap}
+.bu.me{align-self:flex-end;background:var(--ac);color:var(--ax);border-color:var(--ac)}
+.bu .btn{margin-top:8px;width:100%}
+.opt{display:flex;justify-content:space-between;align-items:center;gap:8px;border:1px solid var(--bd);border-radius:12px;padding:10px 12px;margin:6px 0;cursor:pointer;color:var(--tx);font-size:15px}
+.opt.on{border-color:var(--at);background:rgba(127,127,127,.12)}
+.opt.ro{cursor:default}
+.f .opt input{width:auto;margin-right:8px}
+.snd{display:flex;gap:8px;margin-top:8px}.snd input{flex:1}
+.sq{width:38px;height:38px;padding:0;display:grid;place-items:center;position:relative}
+.sq svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.sq.on{border-color:var(--at)}
+.bd{position:absolute;top:-4px;right:-4px;min-width:18px;height:18px;border-radius:9px;background:var(--ac);color:var(--ax);font-size:11px;font-weight:700;display:grid;place-items:center;padding:0 4px}
+.gap{flex:1}
+.av{overflow:hidden}.av img{width:100%;height:100%;object-fit:cover;display:block}
+.th2{display:flex;gap:8px;flex-wrap:wrap}
+.ph{position:relative;width:72px;height:72px;border-radius:12px;overflow:hidden;border:1px solid var(--bd)}
+.ph img{width:100%;height:100%;object-fit:cover;display:block}
+.ph button{position:absolute;top:2px;right:2px;width:22px;height:22px;border-radius:50%;border:0;background:rgba(0,0,0,.6);color:#fff;padding:0;line-height:1}
+.ph.add{display:grid;place-items:center;font-size:26px;color:var(--at);border:1px dashed var(--at);margin:0;cursor:pointer}
+.bu .im{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+.bu .im img{width:96px;height:96px;object-fit:cover;border-radius:10px;display:block}
+.mw{position:relative}
+.av{width:40px;height:40px;border-radius:50%;border:2px solid var(--at);background:var(--ac);color:var(--ax);font-weight:800;font-size:16px;padding:0}
+.mn{position:absolute;right:0;top:48px;min-width:210px;background:var(--cd);border:1px solid var(--bd);border-radius:14px;padding:6px;z-index:8;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.mn button{display:flex;justify-content:space-between;gap:12px;width:100%;background:none;border:0;padding:10px 12px;border-radius:10px;text-align:left}
+.mn button:hover{background:rgba(127,127,127,.15)}
+.mn b{color:var(--at)}
+</style></head>
+<body><div id="app"></div>
+<script>
+const CATS=['일러스트','SD·고정틀','캐릭터','이모티콘','굿즈','영상·모션','음악','글'];
+const PM=['YEOWOO PAY','DOCHI PAY','GGUNG PAY','RAPI PAY','PRIDE PAY'];
+const AR=[
+['유하','섬세한 채색과 진한 색감의 일러스트 작가예요.',2,4,205],
+['민트초코','SD와 고정틀 전문, 페어 의뢰가 많아요.',1,3,165],
+['모카','굿즈와 한복·교복 같은 의상 표현이 강점이에요.',3,5,25],
+['노을','파스텔톤 일러스트와 이모티콘을 그려요.',0,3,340],
+['서린','컨셉아트, 라이브2D 리깅, 작곡을 맡아요.',1,2,265],
+['도윤','모션, 짧은 애니, 칩튠 BGM을 만들어요.',2,4,120],
+['해무','수채풍의 아련한 일러스트를 그려요.',1,3,185],
+['코코아','선화가 깔끔한 만화체 일러스트 작가예요.',2,4,45],
+['라임','팝한 색감의 SD와 페어 일러스트를 그려요.',3,6,90],
+['시안','반실사풍 두꺼운 채색을 해요.',0,2,225],
+['새벽','단편 소설과 AU 썰을 쓰는 글 작가예요.',3,4,295]];
+const T=(n,c,a,d,s,o,q)=>({n,c,a,d,s,o,q});
+const TI=p=>['두상','흉상','반신','전신'].map((l,i)=>[l,p[i]]);
+const Q=['인원',4],ILL='부위별 선택 (가격은 인당). ';
+const F=(n,a,p,s)=>T(n,'SD·고정틀',a,4,s+' 배경과 포즈는 고정, 의상과 캐릭터만 바꿔요.',[['고정틀 기본',p],['의상 디테일 추가',p+3000]],Q);
+const BASE=[
+T('섬세 채색 일러스트','일러스트',0,10,ILL+'부드러운 광원과 진한 채색.',TI([30000,45000,60000,80000]),Q),
+T('수채풍 일러스트','일러스트',6,9,ILL+'번짐이 살아 있는 아련한 질감.',TI([20000,40000,50000,65000]),Q),
+T('선화 중심 만화체 일러스트','일러스트',7,7,ILL+'깔끔한 선과 플랫 채색.',TI([20000,40000,50000,60000]),Q),
+T('파스텔 일러스트','일러스트',3,8,ILL+'포근한 파스텔 톤.',TI([25000,40000,55000,70000]),Q),
+T('컨셉아트 일러스트','일러스트',4,14,ILL+'세계관이 느껴지는 연출.',TI([35000,50000,70000,100000]),Q),
+T('반실사 두꺼운 채색 일러스트','일러스트',9,16,ILL+'질감과 명암이 강한 채색.',TI([40000,60000,85000,120000]),Q),
+T('배경 포함 일러스트 (유하)','일러스트',0,14,'캐릭터와 어울리는 배경까지 한 장에. 10만원부터.',[['반신+배경',100000],['전신+배경',130000],['전신+정교한 배경',180000]]),
+T('배경 포함 일러스트 (시안)','일러스트',9,18,'반실사풍 배경과 캐릭터.',[['반신+배경',140000],['전신+배경',180000],['전신+정교한 배경',250000]]),
+T('SD 일러스트 (자유 포즈)','SD·고정틀',8,5,'원하는 포즈로 그리는 SD. 페어 의뢰 환영.',[['SD 전신',10000],['SD 전신+소품',13000],['SD+간단 배경',18000]],Q),
+F('벚꽃길 페어 고정틀',1,10000,'벚꽃길을 걷는 모습.'),
+F('교복 졸업식 고정틀',8,12000,'꽃다발을 든 졸업식.'),
+F('크리스마스 눈사람 고정틀',3,12000,'눈 오는 날 눈사람 만들기.'),
+F('한복 세배 고정틀',2,13000,'한복 입고 새해 세배.'),
+F('수영장 물놀이 고정틀',8,12000,'튜브와 물총 놀이.'),
+F('카페 데이트 고정틀',7,14000,'창가 자리 카페 데이트.'),
+F('할로윈 파티 고정틀',1,11000,'호박 랜턴 파티.'),
+F('웨딩 포토존 고정틀',0,18000,'웨딩 아치 앞 기념사진.'),
+T('캐릭터 레퍼런스 시트','캐릭터',1,10,'설정 정리용 시트.',[['컬러 설정 시트',70000],['표정·소품 포함',120000]]),
+T('이모티콘 시안','이모티콘',3,14,'제안용 정지 이모티콘 시안.',[['8종',100000],['16종',180000]]),
+T('움직이는 이모티콘','이모티콘',3,18,'24프레임 이내 모션 이모티콘.',[['8종',200000],['16종',360000]]),
+T('아크릴 키링 도안','굿즈',2,6,'인쇄용 파일까지 제공.',[['단면 도안',40000],['양면 도안',60000]]),
+T('스티커 세트 디자인','굿즈',2,7,'컷팅 라인 포함.',[['6종',50000],['12종',90000]]),
+T('라이브2D 리깅','영상·모션',4,35,'파츠 분리된 PSD가 필요해요. 10만원부터.',[['기본 리깅',100000],['정밀 리깅 (표정·머리)',180000],['전신 리깅',250000]]),
+T('애니메이션','영상·모션',5,14,'1초 단위로 의뢰해요. 길이를 골라 주세요.',[['컷 애니 (1초당)',20000],['풀 애니 (1초당)',40000]],['길이(초)',30]),
+T('모션 그래픽','영상·모션',5,10,'로고·채널용 짧은 모션.',[['간단 모션',30000],['모션 인트로',60000]]),
+T('오리지널 BGM','음악',4,14,'분위기 레퍼런스에 맞춘 작곡.',[['1분 이하',20000],['2분 이하',40000],['3분 이상',60000]]),
+T('칩튠 BGM','음악',5,12,'게임풍 8비트 BGM.',[['1분 이하',20000],['2분 이하',45000],['3분 이상',65000]]),
+T('단편 소설 의뢰','글',10,10,'1,000자당 4,000원부터.',[['1,000자 단위',4000]],['분량(천 자)',20]),
+T('AU 썰 의뢰','글',10,7,'1,000자당 2,000원부터.',[['1,000자 단위',2000]],['분량(천 자)',20])
+].map((x,i)=>({...x,id:'b'+i,p:Math.min(...x.o.map(v=>v[1]))}));
+const K='yeowoo-v2';
+let S={view:'home',q:'',cat:'전체',sort:'rec',favs:[],orders:[],custom:[],theme:null,name:'나',pts:300000,modal:null,id:null,pid:null,pm:0,dr:{}};
+try{Object.assign(S,JSON.parse(localStorage.getItem(K)||'{}'))}catch(e){}
+S.theme=S.theme||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+const sv=()=>{try{localStorage.setItem(K,JSON.stringify({favs:S.favs,orders:S.orders,custom:S.custom,theme:S.theme,name:S.name,pts:S.pts,avatar:S.avatar}))}catch(e){toast('저장 공간이 가득 찼어요. 사진을 줄이거나 내역을 비워 주세요')}};
+const $=s=>document.querySelector(s);
+const e=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const items=()=>[...BASE,...S.custom];
+const cats=()=>[...new Set([...CATS,...S.custom.map(x=>x.c)])];
+const find=id=>items().find(x=>x.id===id);
+const opts=x=>x.o||[['기본',x.p]];
+const ord=id=>S.orders.find(o=>o.id===id);
+const hue=x=>(AR[x.a][4]+x.n.length*17)%360;
+const th=h=>`background:linear-gradient(135deg,hsl(${h} 70% 62%),hsl(${(h+45)%360} 70% 46%))`;
+const P=n=>n.toLocaleString('ko-KR')+' P';
+const tot=x=>Math.round(opts(x)[S.dr.o||0][1]*(x.q?(S.dr.n||1):1)*(1+(S.dr.comm?.5:0)+(S.dr.rush?.2:0)));
+function toast(m){const t=document.createElement('div');t.id='toast';t.textContent=m;document.body.appendChild(t);setTimeout(()=>t.remove(),2200)}
+function list(){let l=items().filter(x=>(S.cat==='전체'||x.c===S.cat)&&(!S.q||(x.n+x.c+(x.s||'')+AR[x.a][0]).includes(S.q)));
+ if(S.sort==='lo')l.sort((a,b)=>a.p-b.p);if(S.sort==='hi')l.sort((a,b)=>b.p-a.p);return l}
+const card=x=>`<article class="card" data-a="open" data-v="${x.id}"><div class="th" style="${th(hue(x))}">${e(x.n.slice(0,2))}</div><div class="cb"><span class="tag">${e(x.c)}</span><h3>${e(x.n)}</h3><p class="mu">${e(AR[x.a][0])} · ${x.d}일</p><div class="row"><b>${P(x.p)}~</b><button class="heart" data-a="fav" data-v="${x.id}" aria-label="찜하기">${S.favs.includes(x.id)?'♥':'♡'}</button></div></div></article>`;
+const grid=(l=list())=>l.length?l.map(card).join(''):'<p class="empty">조건에 맞는 커미션이 없어요. 검색어나 카테고리를 바꿔 보세요.</p>';
+const dots=a=>`<span class="dots">${'<i class="o"></i>'.repeat(AR[a][2])}${'<i></i>'.repeat(AR[a][3]-AR[a][2])}</span> 빈 슬롯 ${AR[a][2]}/${AR[a][3]}`;
+const gal=a=>`<div class="gal">${['두상','흉상','반신','전신','SD','배경'].map((n,i)=>`<div style="${th((AR[a][4]+i*38)%360)}">${n}</div>`).join('')}</div>`;
+function home(){return`<h1>사지는 않고, 누르기만 하는 커미션 마켓</h1><p class="mu">신청서도 쓰고 결제 버튼도 누르지만 실제 돈은 나가지 않아요.</p>
+<div class="bar"><input id="q" data-in="q" type="search" placeholder="커미션, 작가, 카테고리 검색" value="${e(S.q)}"><select data-in="sort" aria-label="정렬"><option value="rec"${S.sort==='rec'?' selected':''}>기본 순</option><option value="lo"${S.sort==='lo'?' selected':''}>시작가 낮은 순</option><option value="hi"${S.sort==='hi'?' selected':''}>시작가 높은 순</option></select><button class="btn" data-a="add">+ 타입 추가</button></div>
+<div class="chips">${['전체',...cats()].map(c=>`<button class="chip${S.cat===c?' on':''}" data-a="cat" data-v="${e(c)}">${e(c)}</button>`).join('')}</div>
+<div class="grid" id="grid">${grid()}</div>`}
+function detail(){const x=find(S.id);if(!x)return home();const a=AR[x.a];
+return`<button class="btn g" data-a="go" data-v="home">← 목록</button><div class="det" style="margin-top:12px"><div class="big" style="${th(hue(x))}">${e(x.n.slice(0,2))}</div><div><span class="tag">${e(x.c)}</span><h1>${e(x.n)}</h1><p>${e(x.s||'작가와 상세 내용을 조율해 진행해요.')}</p>
+${opts(x).map(([l,p])=>`<div class="opt ro"><span>${e(l)}</span><b>${P(p)}${x.q&&x.q[0]==='인원'?' /인':''}</b></div>`).join('')}
+<p class="mu">작업 기간 약 ${x.d}일 · 수정 2회${x.q?' · '+e(x.q[0])+' 선택 가능':''}</p>
+<div class="box"><b role="link" tabindex="0" style="cursor:pointer;color:var(--at)" data-a="artist" data-v="${x.a}">${e(a[0])} 작가 프로필 보기</b><p class="mu">${dots(x.a)}</p></div>
+<div class="row" style="justify-content:flex-start;gap:8px"><button class="btn" data-a="apply" data-v="${x.id}">신청서 작성</button><button class="btn g" data-a="fav" data-v="${x.id}">${S.favs.includes(x.id)?'♥ 찜 해제':'♡ 찜하기'}</button></div></div></div>`}
+function artists(){return`<h1>작가</h1><div class="grid">${AR.map((a,i)=>`<article class="card" data-a="artist" data-v="${i}"><div class="th" style="${th(a[4])}">${e(a[0].slice(0,1))}</div><div class="cb"><h3>${e(a[0])}</h3><p class="mu">${e(a[1])}</p><p class="mu" style="margin-top:8px">${dots(i)}</p></div></article>`).join('')}</div>`}
+function artist(){const i=+S.id,a=AR[i];return`<button class="btn g" data-a="go" data-v="artists">← 작가 목록</button><h1>${e(a[0])}</h1><p>${e(a[1])}</p><p>${dots(i)}</p><h2>샘플 갤러리</h2>${gal(i)}<h2>진행 중인 커미션</h2><div class="grid">${grid(items().filter(x=>x.a===i))}</div>`}
+function favs(){const l=items().filter(x=>S.favs.includes(x.id));return`<h1>찜한 커미션</h1><div class="grid">${l.length?grid(l):'<p class="empty">아직 찜한 커미션이 없어요. 마음에 드는 카드의 ♡를 눌러 보세요.</p>'}</div>`}
+const hasReq=o=>o.st==='pending'&&o.msgs.some(m=>m.pay);
+function orders(){return`<h1>신청 내역</h1>${S.orders.length?S.orders.map(o=>`<div class="box" role="button" tabindex="0" style="cursor:pointer" data-a="chat" data-v="${o.id}"><div class="row" style="margin:0"><b>${e(o.n)}</b><span class="tag">${o.st==='paid'?'결제 완료 (가상)':'결제 대기'}</span></div><p class="mu">${e(o.who)} 작가 · ${e(o.t)}</p><p class="mu">${e(o.opt)} · ${P(o.amt)}${o.pm?' · '+e(o.pm):''}</p></div>`).join('')+'<button class="btn g" data-a="clr">내역 비우기</button>':'<p class="empty">신청 내역이 비어 있어요.</p>'}`}
+const bub=(m,o)=>`<div class="bu${m.f==='me'?' me':''}">${e(m.t)}${m.imgs&&m.imgs.length?`<div class="im">${m.imgs.map(d=>`<img src="${d}" alt="첨부 이미지">`).join('')}</div>`:''}${m.pay?(o.st==='paid'?'<p class="mu">결제 완료 ✓</p>':`<button class="btn" data-a="payreq" data-v="${o.id}">${P(o.amt)} 결제하기</button>`):''}</div>`;
+function chat(){const o=ord(S.id);
+ if(!o)return`<h1>채팅</h1>${S.orders.length?S.orders.map(o=>`<div class="box" role="button" tabindex="0" style="cursor:pointer" data-a="chat" data-v="${o.id}"><div class="row" style="margin:0"><b>${e(o.who)} 작가</b>${hasReq(o)?'<span class="tag">결제 요청</span>':''}</div><p class="mu">${e(o.n)} · ${e(o.msgs[o.msgs.length-1].t.slice(0,30))}</p></div>`).join(''):'<p class="empty">아직 대화가 없어요. 커미션을 신청하면 작가님과 대화방이 열려요.</p>'}`;
+ return`<button class="btn g" data-a="go" data-v="chat">← 채팅 목록</button><h2>${e(o.who)} 작가 · ${e(o.n)}</h2><div class="cl">${o.msgs.map(m=>bub(m,o)).join('')}</div><div class="snd f"><input id="msg" placeholder="메시지 입력" aria-label="메시지"><button class="btn" data-a="send">보내기</button></div>`}
+function me(){const s=S.orders.reduce((n,o)=>n+o.amt,0);return`<h1>내 프로필</h1><div class="box"><p class="mu">프로필 사진</p><div style="display:flex;gap:12px;align-items:center;margin-top:8px"><span class="av" style="display:grid;place-items:center;flex:none">${avc()}</span><label class="btn g" style="cursor:pointer">사진 선택<input type="file" accept="image/*" data-in="avatar" hidden></label>${S.avatar?'<button class="btn g" data-a="delav">삭제</button>':''}</div></div><div class="box f"><label for="nm">닉네임</label><input id="nm" data-in="name" value="${e(S.name)}"></div>
+<div class="box"><p class="mu">보유 포인트</p><p class="pt">${P(S.pts)}</p><button class="btn g" data-a="charge">+100,000 P 충전 (가상)</button></div>
+<div class="box"><p class="mu">찜 ${S.favs.length}개 · 가상 신청 ${S.orders.length}건</p><p class="pt">₩${s.toLocaleString('ko-KR')}</p><p class="mu">신청만 하고 실제로는 쓰지 않은 금액 (1P = 1원)</p></div>
+<button class="btn g" data-a="theme">${S.theme==='dark'?'라이트 모드로':'다크 모드로'}</button>`}
+function modal(){const m=S.modal;if(!m)return'';let h='';
+ if(m==='apply'){const x=find(S.id),o=opts(x),t=tot(x);
+  h=`<h2 style="margin-top:0">신청서 · ${e(x.n)}</h2><div class="f"><label>옵션</label>${o.map(([l,p],i)=>`<label class="opt${(S.dr.o||0)===i?' on':''}"><span><input type="radio" name="o" data-in="dr.o" value="${i}"${(S.dr.o||0)===i?' checked':''}>${e(l)}</span><b>${P(p)}</b></label>`).join('')}
+  ${x.q?`<label for="qn">${e(x.q[0])}</label><select id="qn" data-in="dr.n">${Array.from({length:x.q[1]},(_,i)=>`<option value="${i+1}"${(S.dr.n||1)===i+1?' selected':''}>${i+1}</option>`).join('')}</select>`:''}
+  <label for="memo">요청 내용</label><textarea id="memo" data-in="dr.memo" rows="4" placeholder="캐릭터 설정, 분위기, 참고 링크를 적어 주세요">${e(S.dr.memo||'')}</textarea>
+  <label>참고 자료 (최대 4장)</label><div class="th2">${(S.dr.imgs||[]).map((d,i)=>`<span class="ph"><img src="${d}" alt="참고 이미지 ${i+1}"><button type="button" data-a="rmimg" data-v="${i}" aria-label="삭제">×</button></span>`).join('')}${(S.dr.imgs||[]).length<4?'<label class="ph add" aria-label="사진 추가">＋<input type="file" accept="image/*" multiple data-in="refs" hidden></label>':''}</div>
+  <label class="ck"><input type="checkbox" data-in="dr.comm"${S.dr.comm?' checked':''}>상업적 이용 (+50%)</label><label class="ck"><input type="checkbox" data-in="dr.rush"${S.dr.rush?' checked':''}>급행 진행 (+20%)</label></div>
+  <p class="mu" style="margin-top:12px">예상 포인트 (결제는 작가님 확인 후 채팅으로 요청돼요)</p><p class="pt" style="margin:0">${P(t)}</p><div class="row"><button class="btn g" data-a="close">취소</button><button class="btn" data-a="submit">신청서 접수</button></div>`}
+ if(m==='pay'||m==='paying'||m==='done'){const o=ord(S.pid);if(!o)return'';
+  if(m==='pay'){const ok=S.pts>=o.amt;h=`<h2 style="margin-top:0">결제하기</h2><p class="mu">${e(o.n)} · ${e(o.opt)}</p><p class="pt">${P(o.amt)}</p><p class="mu">결제 수단</p>${PM.map((n,i)=>`<label class="opt${S.pm===i?' on':''}"><span><input type="radio" name="pm" data-in="pm" value="${i}"${S.pm===i?' checked':''}>${n}</span></label>`).join('')}<div class="pay"><span>보유 포인트</span><b>${P(S.pts)}</b></div><div class="pay"><span>결제 후 잔여</span><b>${ok?P(S.pts-o.amt):'부족'}</b></div>${ok?'':'<button class="btn g" style="width:100%;margin-bottom:8px" data-a="charge">+100,000 P 충전 (가상)</button>'}<div class="row"><button class="btn g" data-a="close">닫기</button><button class="btn" data-a="pay"${ok?'':' disabled'}>${PM[S.pm]}로 결제</button></div>`}
+  if(m==='paying')h=`<div class="c"><div class="sp"></div><h2>결제 중입니다…</h2><p class="mu">${PM[S.pm]}로 ${P(o.amt)} 처리 중</p></div>`;
+  if(m==='done')h=`<div class="c"><div class="ok">✓</div><h2>커미션 신청 완료!</h2><p class="mu">실제 결제는 되지 않았어요. 남은 포인트 ${P(S.pts)}</p><div class="row" style="justify-content:center;gap:8px"><button class="btn g" data-a="go" data-v="home">계속 둘러보기</button><button class="btn" data-a="chat" data-v="${o.id}">채팅 보기</button></div></div>`}
+ if(m==='add')h=`<h2 style="margin-top:0">커미션 타입 추가</h2><div class="f"><label for="an">이름</label><input id="an" placeholder="예: 웨딩 청첩장 일러스트"><label for="ac">카테고리</label><input id="ac" list="cl" placeholder="선택하거나 새로 입력"><datalist id="cl">${cats().map(c=>`<option value="${e(c)}">`).join('')}</datalist><label for="ap">시작가 (P)</label><input id="ap" type="number" min="1000" step="1000" value="30000"><label for="ad">작업 기간 (일)</label><input id="ad" type="number" min="1" value="7"><label for="aa">작가</label><select id="aa">${AR.map((a,i)=>`<option value="${i}">${e(a[0])}</option>`).join('')}</select><label for="as">설명</label><input id="as"></div><div class="row"><button class="btn g" data-a="close">취소</button><button class="btn" data-a="save">추가하기</button></div>`;
+ return`<div class="ov"><div class="md" role="dialog" aria-modal="true">${h}</div></div>`}
+const IC={moon:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>',sun:'<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>',chat:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L3 20l1.2-4.6A8 8 0 1 1 21 12z"/></svg>'};
+const avc=()=>S.avatar?`<img src="${S.avatar}" alt="프로필 사진">`:e([...(S.name||'나').trim()][0]||'나');
+function img(f,max,q){return new Promise((ok,no)=>{const r=new FileReader();r.onerror=no;r.onload=()=>{const i=new Image();i.onerror=no;i.onload=()=>{const k=Math.min(1,max/Math.max(i.width,i.height)),c=document.createElement('canvas');c.width=Math.round(i.width*k);c.height=Math.round(i.height*k);c.getContext('2d').drawImage(i,0,0,c.width,c.height);ok(c.toDataURL('image/jpeg',q))};i.src=r.result};r.readAsDataURL(f)})}
+function topBar(){const np=S.orders.filter(hasReq).length,dk=S.theme==='dark';
+ return`<div class="top"><button class="logo" data-a="go" data-v="home">YEOWOO</button><button class="ic sq" data-a="theme" aria-label="${dk?'라이트 모드로 전환':'다크 모드로 전환'}">${dk?IC.moon:IC.sun}</button><button class="ic sq${S.view==='chat'?' on':''}" data-a="go" data-v="chat" aria-label="채팅">${IC.chat}${np?`<span class="bd">${np}</span>`:''}</button><span class="gap"></span><div class="mw"><button class="av" data-a="menu" aria-label="내 메뉴" aria-expanded="${!!S.menu}">${avc()}</button>${S.menu?`<div class="mn" role="menu"><button role="menuitem" data-a="go" data-v="favs">찜 목록<b>${S.favs.length}</b></button><button role="menuitem" data-a="go" data-v="orders">신청 내역<b>${S.orders.length}</b></button><button role="menuitem" data-a="go" data-v="me">보유 포인트<b>${P(S.pts)}</b></button><button role="menuitem" data-a="go" data-v="me">프로필 수정</button></div>`:''}</div></div>`}
+function R(y=scrollY){const my=$('.md')?$('.md').scrollTop:0;document.documentElement.dataset.theme=S.theme;
+ const v=S.view,np=S.orders.filter(hasReq).length;
+ const nav=[['home','둘러보기'],['artists','작가 목록']];
+ const body={home,detail,artists,artist,favs,orders,chat,me}[v]();
+ $('#app').innerHTML=`<header>${topBar()}<nav>${nav.map(n=>`<button class="${v===n[0]||(v==='detail'&&n[0]==='home')||(v==='artist'&&n[0]==='artists')?'on':''}" data-a="go" data-v="${n[0]}">${n[1]}</button>`).join('')}</nav></header><main class="w">${body}</main>${modal()}`;
+ scrollTo(0,y);const m=$('.md');if(m)m.scrollTop=my}
+function reqPay(id){const o=ord(id);if(!o||o.st!=='pending'||o.msgs.some(m=>m.pay))return;
+ o.msgs.push({f:'a',pay:1,t:'신청서 확인했어요! 아래에서 결제해 주시면 바로 작업을 시작할게요.'});sv();
+ if(!(S.view==='chat'&&S.id===id))toast(o.who+' 작가님이 결제를 요청했어요');R()}
+function send(){const i=$('#msg'),o=ord(S.id);if(!i||!o||!i.value.trim())return;
+ o.msgs.push({f:'me',t:i.value.trim()});sv();R();
+ setTimeout(()=>{o.msgs.push({f:'a',t:['확인했어요, 참고해서 작업할게요!','좋아요 :) 진행 상황은 여기서 공유드릴게요.','네! 추가로 궁금한 점 있으면 말씀 주세요.'][o.msgs.length%3]});sv();R()},1200)}
+document.addEventListener('click',ev=>{
+ if(ev.target.classList.contains('ov')&&S.modal!=='paying'){S.modal=null;R();return}
+ const b=ev.target.closest('[data-a]');if(!b){if(S.menu){S.menu=false;R()}return}ev.stopPropagation();
+ const a=b.dataset.a,v=b.dataset.v;let y=scrollY;if(a==='menu')S.menu=!S.menu;else S.menu=false;
+ if(a==='go'){S.view=v;S.modal=null;if(v==='chat')S.id=null;y=0}
+ else if(a==='open'){S.view='detail';S.id=v;y=0}
+ else if(a==='artist'){S.view='artist';S.id=v;y=0}
+ else if(a==='chat'){S.view='chat';S.id=v;S.modal=null;y=0}
+ else if(a==='cat')S.cat=v;
+ else if(a==='theme')S.theme=S.theme==='dark'?'light':'dark';
+ else if(a==='fav'){const i=S.favs.indexOf(v);i<0?S.favs.push(v):S.favs.splice(i,1)}
+ else if(a==='apply'){S.id=v;S.dr={o:0,n:1};S.modal='apply'}
+ else if(a==='add')S.modal='add';
+ else if(a==='close')S.modal=null;
+ else if(a==='clr')S.orders=[];
+ else if(a==='delav')S.avatar='';
+ else if(a==='rmimg')S.dr.imgs.splice(+v,1);
+ else if(a==='charge'){S.pts+=100000;toast('가상 포인트 100,000 P 충전')}
+ else if(a==='send'){send();return}
+ else if(a==='submit'){const x=find(S.id),o=opts(x)[S.dr.o||0],n=x.q?(S.dr.n||1):1,id='o'+Date.now();
+  S.orders.unshift({id,n:x.n,who:AR[x.a][0],amt:tot(x),t:new Date().toLocaleString('ko-KR'),st:'pending',opt:o[0]+(x.q?' × '+n:''),pm:'',
+   msgs:[{f:'me',t:'신청서를 접수했어요. '+o[0]+(x.q?' × '+n+' ('+x.q[0]+')':'')+(S.dr.memo?'\n'+S.dr.memo:''),imgs:S.dr.imgs||[]}]});
+  S.modal=null;S.view='chat';S.id=id;y=0;toast('신청서가 접수됐어요. 작가님 답변을 기다려 주세요');setTimeout(()=>reqPay(id),1800)}
+ else if(a==='payreq'){S.pid=v;S.modal='pay'}
+ else if(a==='pay'){const o=ord(S.pid);if(!o||S.pts<o.amt)return;S.modal='paying';
+  setTimeout(()=>{if(S.modal!=='paying')return;S.pts-=o.amt;o.st='paid';o.pm=PM[S.pm];o.msgs.push({f:'a',t:'결제 확인했어요! 작업 시작할게요 ✨'});S.modal='done';sv();R()},2200)}
+ else if(a==='save'){const n=$('#an').value.trim(),p=+$('#ap').value;
+  if(!n||!(p>0)){toast('이름과 가격을 입력해 주세요');return}
+  S.custom.push({id:'c'+Date.now(),n,c:$('#ac').value.trim()||'기타',p,d:+$('#ad').value||7,a:+$('#aa').value,s:$('#as').value.trim()});
+  S.modal=null;S.view='home';S.cat='전체';y=0;toast('커미션 타입을 추가했어요')}
+ sv();R(y)});
+document.addEventListener('input',ev=>{const k=ev.target.dataset.in;if(!k)return;
+ if(k==='q'){S.q=ev.target.value;$('#grid').innerHTML=grid()}
+ else if(k==='name'){S.name=ev.target.value;sv()}
+ else if(k==='dr.memo')S.dr.memo=ev.target.value});
+document.addEventListener('change',ev=>{const k=ev.target.dataset.in,t=ev.target;if(!k)return;
+ if(k==='avatar'){if(t.files[0])img(t.files[0],256,.8).then(d=>{S.avatar=d;sv();R()}).catch(()=>toast('이미지를 불러오지 못했어요'));return}
+ if(k==='refs'){const fs=[...t.files].slice(0,4-(S.dr.imgs||[]).length);Promise.all(fs.map(f=>img(f,720,.65))).then(a=>{S.dr.imgs=[...(S.dr.imgs||[]),...a];R()}).catch(()=>toast('이미지를 불러오지 못했어요'));return}
+ if(k==='sort')S.sort=t.value;
+ else if(k==='pm')S.pm=+t.value;
+ else if(k==='dr.o'||k==='dr.n')S.dr[k.slice(3)]=+t.value;
+ else if(k==='dr.comm'||k==='dr.rush')S.dr[k.slice(3)]=t.checked;
+ else return;
+ R()});
+document.addEventListener('keydown',ev=>{if(ev.key!=='Enter')return;
+ if(ev.target.id==='msg')send();else if(ev.target.matches('[role=button],[role=link]'))ev.target.click()});
+S.orders=S.orders.filter(o=>o.msgs&&o.id);
+R();S.orders.forEach(o=>reqPay(o.id));
+</script></body></html>
